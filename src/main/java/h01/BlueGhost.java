@@ -29,6 +29,12 @@ public class BlueGhost extends Robot implements Ghost, TickBased {
     @Override
     @StudentImplementationRequired("H2.4")
     public void doMove() {
-        org.tudalgo.algoutils.student.Student.crash("H2.4 - Remove if implemented");
+        while(!isFacingRight()){
+            turnLeft();
+        }
+        while (!isFrontClear()){
+            turnLeft();
+        }
+        move();
     }
 }

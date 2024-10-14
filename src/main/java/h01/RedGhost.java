@@ -1,5 +1,7 @@
 package h01;
 
+import fopbot.Direction;
+import h01.template.Util;
 import org.tudalgo.algoutils.student.annotation.StudentImplementationRequired;
 
 import fopbot.Robot;
@@ -32,6 +34,16 @@ public class RedGhost extends Robot implements Ghost, TickBased {
     @Override
     @StudentImplementationRequired("H2.3")
     public void doMove() {
-        org.tudalgo.algoutils.student.Student.crash("H2.3 - Remove if implemented");
+        Direction bestDirection = Util.furthestDirection(chased, this);
+
+        while (!getDirection().equals(bestDirection)) {
+            turnLeft();
+        }
+        while (!isFrontClear()) {
+            turnLeft();
+        }
+        move();
     }
 }
+
+

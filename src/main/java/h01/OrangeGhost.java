@@ -19,6 +19,9 @@ public class OrangeGhost extends Robot implements Ghost, TickBased {
      * @param x the x-coordinate
      * @param y the y-coordinate
      */
+
+    private int counter = 0;
+
     public OrangeGhost(int x, int y) {
         super(x, y, Families.GHOST_ORANGE);
     }
@@ -32,6 +35,21 @@ public class OrangeGhost extends Robot implements Ghost, TickBased {
     @Override
     @StudentImplementationRequired("H2.2")
     public void doMove() {
-        org.tudalgo.algoutils.student.Student.crash("H2.2 - Remove if implemented");
+        while(isFrontClear()){
+            move();
+        }
+        if (counter % 2 == 0){
+            while (!isFrontClear()){
+                turnLeft();
+                turnLeft();
+                turnLeft();
+            }
+        } else{
+            while(!isFrontClear()){
+                turnLeft();
+            }
+        }
+
+        counter++;
     }
 }
